@@ -23,21 +23,30 @@ exports.create = (req, res) => {
 };
 
 exports.update = (req, res) => {
-  const update_query =
-    `UPDATE ${db_name}.${table_name} SET ` +
-    `name = '${req.body.name}', ` +
-    `description = '${req.body.description}', ` +
-    `author = '${req.body.author}', ` +
-    `private = ${req.body.private} ` +
-    `WHERE id = ${db.connection.escape(req.params.id)}`;
+  let update_query = `UPDATE ${table_name} SET `;
+  let update_query_array = [];
+  if (req.body.title) {
+    update_query_array.push(`title = '${req.body.title}'`);
+  }
+  if (req.body.description) {
+    update_query_array.push(`description = '${req.body.description}'`);
+  }
+  if (req.body.author) {
+    update_query_array.push(`author = '${req.body.author}'`);
+  }
+  if (req.body.private) {
+    update_query_array.push(`private = '${req.body.private}'`);
+  }
+  update_query = update_query + update_query_array.join(', ');
+  update_query = update_query + ` WHERE id = ${req.params.id}`
   const results = db.run(update_query, []);
   res.send({ data: results });
 };
 
 exports.delete = (req, res) => {
   const delete_query =
-    `DELETE FROM ${db_name}.${table_name} ` +
-    `WHERE id=${db.connection.escape(req.params.id)}`;
+    `DELETE FROM ${table_name} ` +
+    `WHERE id=${req.params.id}`;
   const results = db.run(delete_query, []);
   res.send({ data: results });
 };

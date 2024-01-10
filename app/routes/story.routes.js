@@ -7,6 +7,9 @@ var story_controller = require('../controller/story.controller');
 router.get('/', story_controller.getAll);
 
 router.get('/:id', story_controller.get);
+router.get('/title/:title', story_controller.getByTitle);
+router.get('/author/:author', story_controller.getByAuthor);
+router.get('/private/:private', story_controller.getByPrivate);
 
 router.post('/create', story_controller.create);
 

@@ -57,6 +57,25 @@ exports.get = (req, res) => {
   const results = db.get(get_query, []);
   res.send({ data: results });
 };
+exports.getByTitle = (req, res) => {
+  const get_query =
+    `SELECT * FROM ${table_name} ` + `WHERE title LIKE '%${req.params.title}%'`;
+  console.log(get_query);
+  const results = db.all(get_query, []);
+  res.send({ data: results });
+};
+exports.getByAuthor = (req, res) => {
+  const get_query =
+    `SELECT * FROM ${table_name} ` + `WHERE author LIKE '%${req.params.author}%'`;
+  const results = db.all(get_query, []);
+  res.send({ data: results });
+};
+exports.getByPrivate = (req, res) => {
+  const get_query =
+    `SELECT * FROM ${table_name} ` + `WHERE private=${req.params.private}`;
+  const results = db.all(get_query, []);
+  res.send({ data: results });
+};
 
 exports.getAll = (req, res) => {
   const results = db.all(`SELECT * FROM ${table_name}`, []);

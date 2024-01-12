@@ -21,13 +21,13 @@ app.use(express.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, './client/build', 'index.html'));
-});
-
 // REST Routes
 const baseUrl = '/api';
 app.use(`${baseUrl}/story`, storyRouter);
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, './client/build', 'index.html'));
+});
 
 // set port, listen for requests
 const PORT = process.env.PORT || 3001;

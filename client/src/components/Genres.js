@@ -1,19 +1,19 @@
 import React from "react";
 import { genres } from "../models/genres.model";
 
-class Genres extends React.Component {
-
-  render() {
-    return (
-      <div>
-        <ul class="list-group list-group-flush">
-          {genres.map((g) => (
-            <li class="list-group-item">{`${g.name} (${g.noOfTitles})`}</li>
-          ))}
-        </ul>
-      </div>
-    );
-  }
-}
+const Genres = () => {
+  return (
+    <div>
+      <ul className="list-group list-group-flush">
+        {genres.map((g) => (
+          <li
+            className="list-group-item"
+            key={g.name}
+          >{`${g.name} (${g.noOfTitles})`}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
 export default Genres;

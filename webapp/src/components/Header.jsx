@@ -6,9 +6,6 @@ const Header = () => {
   return (
     <header className="d-flex justify-content-between align-items-center">
       <div className="d-flex justify-content-start align-items-center">
-        {/* <button type="button" className="btn">
-          <i className="bi bi-three-dots-vertical"></i>
-        </button> */}
         <h2 className="main-header-title">
           <b>K's Gallery</b>
         </h2>
@@ -25,7 +22,7 @@ const Header = () => {
           <div className="btn-group">
             <button
               type="button"
-              className="btn btn-primary dropdown-toggle"
+              className="btn btn-light dropdown-toggle"
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >

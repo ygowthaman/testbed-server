@@ -11,7 +11,7 @@ var corsOptions = {
   origin: "http://127.0.0.1:3000"
 };
 
-app.use(express.static(path.resolve(__dirname, './webapp/build')));
+app.use(express.static(path.resolve(__dirname, './webapp/dist')));
 
 app.use(cors(corsOptions));
 
@@ -26,7 +26,7 @@ const baseUrl = '/api';
 app.use(`${baseUrl}/story`, storyRouter);
 
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, './webapp/build', 'index.html'));
+  res.sendFile(path.resolve(__dirname, './webapp/dist', 'index.html'));
 });
 
 // set port, listen for requests

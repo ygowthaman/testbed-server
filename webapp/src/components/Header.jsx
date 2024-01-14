@@ -1,5 +1,6 @@
 import React from "react";
 import "./Header.css";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -8,13 +9,17 @@ const Header = () => {
         {/* <button type="button" className="btn">
           <i className="bi bi-three-dots-vertical"></i>
         </button> */}
-        <h2 className="main-header-title"><b>K's Gallery</b></h2>
+        <h2 className="main-header-title">
+          <b>K's Gallery</b>
+        </h2>
       </div>
       <div className="d-flex justify-content-end align-items-center">
         <div>
-          <button type="button" className="btn">
-            <i className="bi bi-house-fill"></i>
-          </button>
+          <Link to="/">
+            <button type="button" className="btn">
+              <i className="bi bi-house-fill"></i>
+            </button>
+          </Link>
         </div>
         <div>
           <div className="btn-group">
@@ -28,27 +33,29 @@ const Header = () => {
             </button>
             <ul className="dropdown-menu">
               <li>
-                <a className="dropdown-item" href="#">
-                  Tanjore Paintings
-                </a>
+                <Link to="/tanjorepainting" className="dropdown-item">
+                    Tanjore Paintings
+                </Link>
               </li>
               <li>
-                <a className="dropdown-item" href="#">
-                  Another action
-                </a>
+                <Link to="/glasspainting" className="dropdown-item">
+                    Glass Paintings
+                </Link>
               </li>
               <li>
-                <a className="dropdown-item" href="#">
-                  Something else here
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  Separated link
-                </a>
+                <Link to="/abstract" className="dropdown-item">
+                    Abstract Art
+                </Link>
               </li>
             </ul>
           </div>
+        </div>
+        <div className="btn">
+          <Link to="/about">
+            <button type="button" className="btn btn-link">
+              About Me
+            </button>
+          </Link>
         </div>
       </div>
     </header>

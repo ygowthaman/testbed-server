@@ -3,13 +3,20 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import 'bootstrap/js/dist/button';
 import 'bootstrap/js/dist/dropdown';
 import './App.css'
+import Header from './components/Header';
+import MainComponent from './components/MainComponent';
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
 
+  const x = 23;
+
   return (
     <div className="app-content">
-        {/* <Header />
-        <MainContent /> */}
+      <BrowserRouter>
+        <Header />
+        <MainComponent />
+      </BrowserRouter>
     </div>  )
 }
 

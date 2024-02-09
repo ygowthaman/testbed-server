@@ -3,24 +3,16 @@ import "./Header.css";
 import { Link } from "react-router-dom";
 
 const Header = () => {
-
   const [countries, setCountries] = React.useState([]);
 
-  async function fetchCountries() {
-    const countryFetch = await fetch("/api/country", {
-      method: 'GET', // *GET, POST, PUT, DELETE, etc.
-      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-    });
-    const countryJson = await countryFetch.json();
-    console.log(countryJson);
-    return countryJson;
-  }
-
   useEffect(() => {
-    fetchCountries().then((response) => {
-      setCountries(response);
-    });
-  });
+    async function fetchCountries() {
+      const countryFetch = await fetch("/api/country");
+      const countryJson = await countryFetch.json();
+      setCountries(countryJson.data);
+    }
+    fetchCountries();
+  }, []);
 
   return (
     <header className="d-flex justify-content-between align-items-center">
@@ -48,21 +40,15 @@ const Header = () => {
               Countries
             </button>
             <ul className="dropdown-menu">
-              <li>
-                <Link to="/tanjorepainting" className="dropdown-item">
-                  Tanjore Paintings
-                </Link>
-              </li>
-              <li>
-                <Link to="/glasspainting" className="dropdown-item">
-                  Glass Paintings
-                </Link>
-              </li>
-              <li>
-                <Link to="/abstract" className="dropdown-item">
-                  Abstract Art
-                </Link>
-              </li>
+              {countries.map((c) => {
+                return (
+                  <li>
+                    <Link to="" className="dropdown-item">
+                      {c.countryName}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>

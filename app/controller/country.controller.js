@@ -78,5 +78,15 @@ const table_name = "country";
 
 exports.getAll = (req, res) => {
   const results = db.all(`SELECT * FROM ${table_name}`, []);
-  res.send({ data: results });
+  let data = [];
+  if (results && results.length > 0) {
+    data = results.map((r) => {
+      return {
+        countryName: r.country_name,
+        description: r.description,
+        countryUuid: r.country_uuid,
+      };
+    });
+  }
+  res.send({ data });
 };

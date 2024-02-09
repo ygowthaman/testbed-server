@@ -4,11 +4,15 @@ const path = require("path");
 
 // Routers
 var storyRouter = require('./app/routes/story.routes');
+var countryRouter = require('./app/routes/country.routes');
+var destinationRouter = require('./app/routes/destination.routes');
+var landmarkRouter = require('./app/routes/landmark.routes');
+var imageRouter = require('./app/routes/image.routes');
 
 const app = express();
 
 var corsOptions = {
-  origin: "http://127.0.0.1:3000"
+  origin: "http://localhost:5173/"
 };
 
 app.use(express.static(path.resolve(__dirname, './webapp/dist')));
@@ -24,6 +28,10 @@ app.use(express.urlencoded({ extended: true }));
 // REST Routes
 const baseUrl = '/api';
 app.use(`${baseUrl}/story`, storyRouter);
+app.use(`${baseUrl}/country`, countryRouter);
+app.use(`${baseUrl}/destination`, destinationRouter);
+app.use(`${baseUrl}/landmark`, landmarkRouter);
+app.use(`${baseUrl}/image`, imageRouter);
 
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, './webapp/dist', 'index.html'));

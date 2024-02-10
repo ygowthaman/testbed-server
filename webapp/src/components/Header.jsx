@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import "./Header.css";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [countries, setCountries] = React.useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchCountries() {
@@ -40,12 +41,20 @@ const Header = () => {
               Countries
             </button>
             <ul className="dropdown-menu">
-              {countries.map((c) => {
+              {countries.map((country) => {
                 return (
-                  <li>
-                    <Link to="" className="dropdown-item">
-                      {c.countryName}
-                    </Link>
+                  <li
+                    key={country.countryUuid}
+                    className="dropdown-item"
+                    onClick={() => navigate(`/country/${country.countryUuid}`)}
+                  >
+                    {country.countryName}
+                    {/* <Navigate
+                      to={`/country/${country.countryUuid}`}
+                      replace={true}
+                    >
+                      {country.countryName}
+                    </Navigate> */}
                   </li>
                 );
               })}

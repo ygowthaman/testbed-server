@@ -8,9 +8,6 @@ import MainComponent from './components/MainComponent';
 import { BrowserRouter } from 'react-router-dom';
 
 function App() {
-
-  const x = 23;
-
   return (
     <div className="app-content">
       <BrowserRouter>

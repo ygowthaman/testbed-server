@@ -42,3 +42,14 @@
 -- INSERT INTO images (landmark_uuid, destination_uuid, country_uuid, image_name, image_location)
 -- VALUES (3, 3, 8, 'A fairy tale creek', 'https://live.staticflickr.com/65535/53519542005_bf0e5301a9_o.jpg')
 
+-- SELECT country.country_uuid, 
+-- country.country_name, 
+-- country.year, 
+-- country.month, 
+-- country.day, 
+-- destination.destination_uuid, 
+-- destination.destination_name 
+-- FROM destination 
+-- INNER JOIN country 
+-- ON country.country_uuid = destination.country_uuid 
+-- WHERE country.country_uuid IS '8'

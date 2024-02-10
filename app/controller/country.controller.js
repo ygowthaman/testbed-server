@@ -90,3 +90,18 @@ exports.getAll = (req, res) => {
   }
   res.send({ data });
 };
+
+exports.get = (req, res) => {
+  const get_query =
+    `SELECT * FROM ${table_name} ` + `WHERE country_uuid=${req.params.id}`;
+  const result = db.get(get_query, []);
+  const data = {
+    countryName: result.country_name,
+    countryUuid: result.country_uuid,
+    year: result.year,
+    month: result.month,
+    day: result.day,
+  }
+
+  res.send({ data });
+};

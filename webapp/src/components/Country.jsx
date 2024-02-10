@@ -18,7 +18,7 @@ const Country = () => {
       setCountry(contJson.data);
     }
     fetchDestinations();
-  }, []);
+  }, [countryUuid]);
 
   return <div>Hello {country.countryName}</div>;
 };

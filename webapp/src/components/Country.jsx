@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import "./Country.css";
 
 const Country = () => {
   const { countryUuid } = useParams();
@@ -20,7 +21,31 @@ const Country = () => {
     fetchDestinations();
   }, [countryUuid]);
 
-  return <div>Hello {country.countryName}</div>;
+  return (
+    <div>
+      <div className="d-flex flex-row align-items-center">
+        <h1 className="country-title">{country.countryName}</h1>
+        {destinations.map((destination) => {
+          return (
+            <a href="">
+              <h4 className="country-destination-title">
+                {destination.destinationName}
+              </h4>
+            </a>
+          );
+        })}
+      </div>
+      <div>
+        <img
+          className="country-title-image"
+          src={country.titleImage}
+          width="6048"
+          height="2198"
+          alt="ak_2023-20"
+        />
+      </div>
+    </div>
+  );
 };
 
 export default Country;

@@ -4,6 +4,7 @@ import Homepage from "./Homepage";
 import AboutMe from "./AboutMe";
 import "./MainComponent.css";
 import Country from "./Country";
+import ManageCountry from "./forms/ManageCountry";
 
 const MainComponent = () => {
   return (
@@ -12,6 +13,7 @@ const MainComponent = () => {
         <Route path="" element={<Homepage />} />
         <Route path="about" element={<AboutMe />} />
         <Route path="country/:countryUuid" element={<Country />} />
+        <Route path="manage-country" element={<ManageCountry />} />
         <Route path="*" element={<Homepage />} />
       </Routes>
     </div>

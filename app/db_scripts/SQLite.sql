@@ -4,13 +4,15 @@
 --   country_name CHAR(100) NOT NULL,
 --   year INTEGER NOT NULL,
 --   month INTEGER NOT NULL,
---   day INTEGER NOT NULL)
+--   day INTEGER NOT NULL,
+--   title-image TEXT)
 
 -- CREATE TABLE destination(
 --   destination_uuid INTEGER PRIMARY KEY AUTOINCREMENT,
 --   country_uuid INTEGER NOT NULL,
 --   destination_name TEXT NOT NULL,
 --   description TEXT,
+--   title-image TEXT,
 --   FOREIGN KEY (country_uuid) REFERENCES country(country_uuid)
 -- );
 
